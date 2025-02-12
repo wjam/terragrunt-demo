@@ -3,7 +3,7 @@ include "root" {
 }
 
 terraform {
-  source = "${get_parent_terragrunt_dir()}/source/two"
+  source = "${get_path_to_repo_root()}/source/two"
 }
 
 dependency "one" {

@@ -3,5 +3,5 @@ include "root" {
 }
 
 terraform {
-  source = "${get_parent_terragrunt_dir()}/source/one"
+  source = "${get_path_to_repo_root()}/source/one"
 }
