@@ -1,0 +1,26 @@
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Terragrunt
+        uses: wjam/terragrunt-action@113-jq-generate-body
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tg_version: '0.83.2'
+          tofu_version: '1.10.5'
+          tg_command: 'run --all -- plan'
+          tg_comment: '1'
